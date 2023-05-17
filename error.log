@@ -1,0 +1,125 @@
+2023-05-16 21:20:10,200 INFO: errors [in /Users/chris/Documents/GitHub/Natural-Control/src/app.py:22]
+2023-05-16 21:28:18,944 INFO: errors [in /Users/chris/Documents/GitHub/Natural-Control/src/app.py:22]
+2023-05-16 21:28:35,763 ERROR: Exception on / [GET] [in /Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/flask/app.py:1414]
+Traceback (most recent call last):
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/src/app.py", line 11, in home
+    return render_template('templates/home.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/flask/templating.py", line 150, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/jinja2/environment.py", line 1081, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/flask/templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/flask/templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: templates/home.html
+2023-05-16 21:29:29,549 INFO: errors [in /Users/chris/Documents/GitHub/Natural-Control/src/app.py:22]
+2023-05-16 21:29:35,682 ERROR: Exception on / [GET] [in /Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/flask/app.py:1414]
+Traceback (most recent call last):
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/src/app.py", line 11, in home
+    return render_template('src/templates/home.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/flask/templating.py", line 150, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/jinja2/environment.py", line 1081, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/flask/templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/flask/templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: src/templates/home.html
+2023-05-16 21:29:37,941 ERROR: Exception on / [GET] [in /Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/flask/app.py:1414]
+Traceback (most recent call last):
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/flask/app.py", line 2190, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/flask/app.py", line 1486, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/flask/app.py", line 1484, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/flask/app.py", line 1469, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/src/app.py", line 11, in home
+    return render_template('src/templates/home.html')
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/flask/templating.py", line 150, in render_template
+    template = app.jinja_env.get_or_select_template(template_name_or_list)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/jinja2/environment.py", line 1081, in get_or_select_template
+    return self.get_template(template_name_or_list, parent, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/jinja2/environment.py", line 1010, in get_template
+    return self._load_template(name, globals)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/jinja2/environment.py", line 969, in _load_template
+    template = self.loader.load(self, name, self.make_globals(globals))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/jinja2/loaders.py", line 126, in load
+    source, filename, uptodate = self.get_source(environment, name)
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/flask/templating.py", line 64, in get_source
+    return self._get_source_fast(environment, template)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/chris/Documents/GitHub/Natural-Control/.venv/lib/python3.11/site-packages/flask/templating.py", line 98, in _get_source_fast
+    raise TemplateNotFound(template)
+jinja2.exceptions.TemplateNotFound: src/templates/home.html
+2023-05-16 21:32:02,292 INFO: errors [in /Users/chris/Documents/GitHub/Natural-Control/src/app.py:22]
+2023-05-16 21:35:17,101 INFO: errors [in /Users/chris/Documents/GitHub/Natural-Control/src/app.py:22]
+2023-05-16 21:35:52,927 INFO: errors [in /Users/chris/Documents/GitHub/Natural-Control/src/app.py:22]
+2023-05-16 21:38:35,071 INFO: errors [in /Users/chris/Documents/GitHub/Natural-Control/src/app.py:22]
+2023-05-16 21:41:59,164 INFO: errors [in /Users/chris/Documents/GitHub/Natural-Control/src/app.py:22]
+2023-05-16 21:48:21,822 INFO: errors [in /Users/chris/Documents/GitHub/Natural-Control/src/app.py:22]
+2023-05-16 22:15:04,102 INFO: errors [in /Users/chris/Documents/GitHub/Natural-Control/src/app.py:24]
+2023-05-16 22:16:36,978 INFO: errors [in /Users/chris/Documents/GitHub/Natural-Control/src/app.py:24]

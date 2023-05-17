@@ -1,0 +1,17 @@
+<!doctype html>
+<head> 
+    <title>Home</title>
+    <link rel="stylesheet" href="/static/css/home.css">
+    <script src="/static/js/home.js"></script>
+</head>
+<body>
+    <h1>Plant Control</h1>
+    <p>Brightness Adjustment</p>
+    <div class="slider-container">
+        <form action="/slider", method="POST">
+            <input type="range" min="0" max="100" value="{{slider}}" class="slider" name="brightness-slider">
+            <p class="slider-value">{{slider}}</p>
+            <input type="submit" value="Submit" class="submit" name="brightness-submit" formaction="/">
+        </form>
+    </div>
+</body>
