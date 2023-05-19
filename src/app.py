@@ -32,16 +32,20 @@ with app.app_context():
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
+    slider_val = 0
     # print all columns in settings table
     if request.method == 'POST':
         slider_val = request.form['brightness-slider']
+        if db.session.query(Setting.id).all() == []:
+            db.session.add(Setting(int(slider_val)))
+        else:
+            # update brightness value in db at id 1
+            db.session.query(Setting).filter_by(id=1).update(dict(brightness=slider_val))
     else:
-        slider_val = 0
-    if db.session.query(Setting.id).all() == []:
-        db.session.add(Setting(int(slider_val)))
-    else:
-        # update brightness value in db at id 1
-        db.session.query(Setting).filter_by(id=1).update(dict(brightness=slider_val))
+        if db.session.query(Setting.id).all() == []:
+            db.session.add(Setting(slider_val))
+        else:
+            slider_val = Setting.query.first().brightness
     db.session.commit()
     return render_template('home.html', slider=slider_val)
 
