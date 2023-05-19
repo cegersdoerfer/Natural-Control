@@ -52,12 +52,6 @@ def slider():
     return str(slider_val)
     #return pwm.analog_write(11, slider_val)
 
-@app.route('/slider_val', methods=['POST'])
-def slider_val():
-    # get slider value from db
-    slider_val = Setting.query.first().brightness
-    return str(slider_val)
-
 if not app.debug:
     file_handler = FileHandler('error.log')
     file_handler.setFormatter(

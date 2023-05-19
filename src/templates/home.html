@@ -11,7 +11,7 @@
         <form action="/slider", method="POST">
             <input type="range" min="0" max="100" value="{{slider}}" class="slider" name="brightness-slider">
             <p class="slider-value">{{slider}}</p>
-            <input type="submit" value="Submit" class="submit" name="brightness-submit" formaction="/">
+            <input type="submit" value="Submit" class="submit" name="brightness-submit" formaction="/", formmethod="POST">
         </form>
     </div>
 </body>
