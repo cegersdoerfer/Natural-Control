@@ -3,13 +3,12 @@ from flask_sqlalchemy import SQLAlchemy
 import logging
 from logging import Formatter, FileHandler
 from slider import Slider
-import serial
 #from forms import *
 import os
-from arduino_setup import setup
+import traceback
 
 app = Flask(__name__)
-app.config.from_object('config')
+app.config.from_pyfile('config.py')
 db = SQLAlchemy(app)
 
 class Setting(db.Model):
@@ -17,44 +16,73 @@ class Setting(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     brightness = db.Column(db.Integer)
+    light_switch = db.Column(db.Boolean)
 
-    def __init__(self, brightness_val=0):
+    def __init__(self, brightness_val=0, light_switch=False):
         self.id = 1
         self.brightness = brightness_val
+        self.light_switch = light_switch
 
     def __repr__(self):
-        return '<val {}>'.format(self.brightness)
+        return '<val: {}, switch: {}>'.format(self.brightness, self.light_switch)
+    
 with app.app_context():
     db.create_all()
 
-
-#pwm = setup()
-
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/')
 def home():
     slider_val = 0
+    switch_val = False
     # print all columns in settings table
-    if request.method == 'POST':
-        slider_val = request.form['brightness-slider']
-        if db.session.query(Setting.id).all() == []:
-            db.session.add(Setting(int(slider_val)))
-        else:
-            # update brightness value in db at id 1
-            db.session.query(Setting).filter_by(id=1).update(dict(brightness=slider_val))
+    if db.session.query(Setting.id).all() == []:
+        db.session.add(Setting(slider_val, switch_val))
     else:
-        if db.session.query(Setting.id).all() == []:
-            db.session.add(Setting(slider_val))
-        else:
-            slider_val = Setting.query.first().brightness
-    db.session.commit()
-    return render_template('home.html', slider=slider_val)
+        res = Setting.query.first()
+        slider_val = res.brightness
+        switch_val = res.light_switch
 
-@app.route('/slider', methods=['POST'])
+    return render_template('home.html', slider=slider_val, switch_val=switch_val)
+
+@app.route('/brightness', methods=['GET', 'POST'])
 def slider():
     # get slider value from db
-    slider_val = Setting.query.first().brightness
-    return str(slider_val)
-    #return pwm.analog_write(11, slider_val)
+    data = request.get_json()
+    brightness_val = data['brightness']
+    if request.method == 'GET':
+        try:
+            res = Setting.query.first()
+            slider_val = res.brightness
+            return jsonify({'success': True, 'slider': slider_val})
+        except:
+            return jsonify({'success': False, 'trace': traceback.format_exc()})
+    else:
+        try:
+            db.session.query(Setting).filter_by(id=1).update(dict(brightness=brightness_val))
+            db.session.commit()
+            return jsonify({'success': True})
+        except:
+            return jsonify({'success': False, 'trace': traceback.format_exc()})
+
+@app.route('/switch', methods=['GET', 'POST'])
+def toggle_light_switch():
+    data = request.get_json()
+    switch_val = data['lightSwitch']
+    # update light switch value in db at id 1
+    if request.method == 'GET':
+        try:
+            res = Setting.query.first()
+            switch_val = res.light_switch
+            return jsonify({'success': True, 'switch': switch_val})
+        except:
+            return jsonify({'success': False, 'trace': traceback.format_exc()})
+    else:
+        try:
+            db.session.query(Setting).filter_by(id=1).update(dict(light_switch=switch_val))
+            db.session.commit()
+            return jsonify({'success': True})
+        except:
+            return jsonify({'success': False, 'trace': traceback.format_exc()})
+    
 
 if not app.debug:
     file_handler = FileHandler('error.log')
@@ -67,4 +95,4 @@ if not app.debug:
     app.logger.info('errors')
 
 if __name__ == '__main__':
-    app.run()
+    app.run(port=5000, debug=True)

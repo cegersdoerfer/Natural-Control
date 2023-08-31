@@ -1,17 +1,43 @@
 <!doctype html>
+
+<script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+
 <head> 
     <title>Home</title>
     <link rel="stylesheet" href="/static/css/home.css">
-    <script src="/static/js/home.js"></script>
+    <script type="text/javascript" src="/static/js/home.js"></script>
+
 </head>
 <body>
     <h1>Plant Control</h1>
     <p>Brightness Adjustment</p>
-    <div class="slider-container">
-        <form action="/slider", method="POST">
-            <input type="range" min="0" max="100" value="{{slider}}" class="slider" name="brightness-slider">
-            <p class="slider-value">{{slider}}</p>
-            <input type="submit" value="Submit" class="submit" name="brightness-submit" formaction="/", formmethod="POST">
-        </form>
+    <div id="m"></div>
+    <div class="container">
+        <div class="column">
+            <label for="lightSwitch" class="wrap">
+                <input type="checkbox" checked="{{switch_val}}" id="lightSwitch" name="lightSwitch" class="light-switch", onclick="toggleLightSwitch(this)"/>
+                <div class="panel">
+                    <div class="overlay"></div>
+                    <div class="switch__hole">
+                        <div class="switch__groove">
+                            <div class="switch">
+                                <div class="switch__top">
+                                    <div class="switch__top-outset"></div>
+                                </div>
+                                <div class="switch__bottom">
+                                    <div class="switch__bottom-outset"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </label>
+        </div>
+        <div class="column">
+            <div id="plant-2" class="plant_base"></div>
+        <div class="column">
+            <div id="react-knob" initialValue=75></div>
+            <script src="{{ url_for('static', filename='bundles/bundle.js') }}"></script>
+        </div>
     </div>
 </body>

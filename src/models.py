@@ -6,11 +6,13 @@ class Setting(db.Model):
 
     #id = db.Column(db.Integer, primary_key=True)
     brightness = db.Column(db.Integer)
+    light_switch = db.Column(db.Boolean)
 
     def __init__(self, brightness_val=0):
         self.brightness = brightness_val
+        self.light_switch = False
 
     def __repr__(self):
-        return '<val {}>'.format(self.brightness)
+        return '<brightness: {} >'.format(self.brightness)
     
     

@@ -1,0 +1,39 @@
+{
+  "name": "control_ui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "static/js/home.js",
+  "private": true,
+  "proxy": "http://localhost:5000",
+  "scripts": {
+    "start": "react-scripts start",
+    "start-backend": "python3 app.py",
+    "build": "webpack --progress --config webpack.config.js",
+    "dev-build": "webpack --progress -d --config webpack.config.js",
+    "watch": "webpack --progress -d --config webpack.config.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cegersdoerfer/Natural-Control.git"
+  },
+  "author": "Chris Egersdoerfer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cegersdoerfer/Natural-Control/issues"
+  },
+  "homepage": "https://github.com/cegersdoerfer/Natural-Control#readme",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.14.1",
+    "react-scripts": "^5.0.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.5",
+    "@babel/preset-env": "^7.22.5",
+    "@babel/preset-react": "^7.22.5",
+    "babel-loader": "^9.1.2",
+    "webpack": "^5.88.1",
+    "webpack-cli": "^5.1.4"
+  }
+}
