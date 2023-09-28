@@ -6,8 +6,8 @@
 
 ///////please enter your sensitive data in the Secret tab/arduino_secrets.h
 /////// WiFi Settings ///////
-char ssid[] = "ATT56Mwt7F";
-char pass[] = "Ring4Ding";
+char ssid[] = "Chris Wifi";
+char pass[] = "DE2001!OBR";
 
 char serverAddress[] = "http://54.198.83.230";  // server address
 int port = 8000;

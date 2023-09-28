@@ -6,6 +6,7 @@ from slider import Slider
 #from forms import *
 import os
 import traceback
+import datetime
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
@@ -82,6 +83,11 @@ def toggle_light_switch():
             return jsonify({'success': True})
         except:
             return jsonify({'success': False, 'trace': traceback.format_exc()})
+        
+@app.route('/time', methods=['GET'])
+def get_time():
+    time = datetime.datetime.now()
+    return jsonify({'success': True, 'time': str(time)})
     
 
 if not app.debug:
