@@ -14,6 +14,9 @@ int port = 80;
 WiFiClient wifi;
 HttpClient client = HttpClient(wifi, serverAddress, port);
 int status = WL_IDLE_STATUS;
+int hour;
+int minute;
+int second;
 
 void setup() {
   Serial.begin(9600);
@@ -39,7 +42,7 @@ void setup() {
 }
 
 void loop() {
-
+  /*
   Serial.println("making POST request for switch val");
   client.beginRequest();
   client.post("/switch");
@@ -50,6 +53,9 @@ void loop() {
   Serial.print("Status code: ");
   Serial.println(statusCode);
   long switch_val = switchRes["switch"];
+  */
+
+  /*
   if (switch_val == "true"){
     Serial.println("switch is on");
     digitalWrite(x, HIGH);
@@ -67,14 +73,31 @@ void loop() {
     long responseval = sliderRes["slider"].toInt();
     brightness_val = map(responseval, 0, 100, 0, 255);
   }
-
+  */
+ /*
   else{
     digitalWrite(x, LOW);
     Serial.print("Switch is off")
   }
+  */
+  Serial.println("making GET request for time");
+  client.beginRequest();
+  client.get("/time");
+  client.endRequest();
+  Serial.println("Parse response and store in hour, minute, second");
+  int statusCode = client.responseStatusCode();
+  JSONVar timeRes = JSON.parse(client.responseBody());
+  Serial.print("Status code: ");
+  Serial.println(statusCode);
+  hour = timeRes["hour"];
+  minute = timeRes["minute"];
+  second = timeRes["second"];
+  
 
+  /*
   Serial.print("Writing value: ");
   Serial.println(brightness_val);
   analogWrite(2, brightness_val);
   delay(1000);
+  */
 }

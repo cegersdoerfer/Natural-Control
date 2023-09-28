@@ -7,6 +7,7 @@ from slider import Slider
 import os
 import traceback
 import datetime
+from pytz import timezone
 
 app = Flask(__name__)
 app.config.from_pyfile('config.py')
@@ -86,8 +87,12 @@ def toggle_light_switch():
         
 @app.route('/time', methods=['GET'])
 def get_time():
-    time = datetime.datetime.now()
-    return jsonify({'success': True, 'time': str(time)})
+    zone = timezone('EST')
+    time = datetime.datetime.now(zone)
+    hours = time.hour
+    minutes = time.minute
+    seconds = time.second
+    return jsonify({'success': True, 'hour': hours, 'minute': minutes, 'second': seconds})
     
 
 if not app.debug:
