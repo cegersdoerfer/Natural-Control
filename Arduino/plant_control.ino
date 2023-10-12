@@ -14,9 +14,9 @@ int port = 80;
 WiFiClient wifi;
 HttpClient client = HttpClient(wifi, serverAddress, port);
 int status = WL_IDLE_STATUS;
-int hour;
-int minute;
-int second;
+int hour = 0;
+int minute = 0;
+int second = 0;
 
 void setup() {
   Serial.begin(9600);
@@ -84,15 +84,35 @@ void loop() {
   client.beginRequest();
   client.get("/time");
   client.endRequest();
-  Serial.println("Parse response and store in hour, minute, second");
   int statusCode = client.responseStatusCode();
-  JSONVar timeRes = JSON.parse(client.responseBody());
-  Serial.print("Status code: ");
-  Serial.println(statusCode);
-  hour = timeRes["hour"];
-  minute = timeRes["minute"];
-  second = timeRes["second"];
+  if (statusCode != 200) {
+    Serial.print("Unexpected status code: ");
+    Serial.println(statusCode);
+    return;
+  }
+  else {
+    JSONVar timeRes = JSON.parse(client.responseBody());
+    hour = timeRes["hour"];
+    minute = timeRes["minute"];
+    second = timeRes["second"];
+  }
+  // if time is between 9:30AM and 7:30PM, turn on the light
+  if (hour >= 9 && hour <= 19) {
+    if (hour == 9 && minute < 30) {
+      digitalWrite(2, HIGH);
+    }
+    else if (hour == 19 && minute > 30) {
+      digitalWrite(2, HIGH);
+    }
+    else {
+      digitalWrite(2, LOW);
+    }
+  }
+  else {
+    digitalWrite(2, HIGH);
+  }
   
+
 
   /*
   Serial.print("Writing value: ");
