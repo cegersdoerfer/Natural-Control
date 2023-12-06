@@ -32,7 +32,7 @@ while True:
     if today != last_water_day and (last_water_day is None or (today - last_water_day).days >= 2):
         # Turn on the water pin
         GPIO.output(water_pin, GPIO.HIGH)
-        time.sleep(60)  # Keep it on for 1 minute
+        time.sleep(180)  # Keep it on for 1 minute
         GPIO.output(water_pin, GPIO.LOW)
         last_water_day = today  # Update the last water day
 
