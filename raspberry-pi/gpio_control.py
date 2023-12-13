@@ -29,7 +29,7 @@ while True:
     today = datetime.date.today()
 
     # Check if today is different from the last water day and if it is an alternate day
-    if today != last_water_day and (last_water_day is None or (today - last_water_day).days >= 2):
+    if today != last_water_day and (last_water_day is None or (today - last_water_day).days >= 3):
         # Turn on the water pin
         GPIO.output(water_pin, GPIO.HIGH)
         time.sleep(60)  # Keep it on for 1 minute
